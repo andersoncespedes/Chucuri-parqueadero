@@ -1,0 +1,19 @@
+{
+    "name": "ticket/ticket",
+    "description": "una aplicacion para la automatizacion de un parqueadero",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Ticket\\Ticket\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anderson Cespedes"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "vlucas/phpdotenv": "5.5.x-dev"
+    }
+}

@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: rgb(226, 223, 223);
+}
+header{
+    width: 100%;
+    font-size: 22px;
+    background-color: red;
+}
+header nav ul{
+    list-style: none;
+}
+header nav ul li{
+    display: inline-block;
+}
+header nav ul li a{
+    display: block;
+    padding: 20px;
+
+    text-decoration: none;
+    color: black;
+}
+.titulo-tabla{
+    width: 100%;
+    text-align: center;
+}
+.table-container{
+    background-color: white;
+    border-radius: 16px;
+    border: 2px solid black;
+    padding: 20px;
+}
