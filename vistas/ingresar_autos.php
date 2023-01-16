@@ -24,22 +24,45 @@ $id = 1;
                 </ul>
         </nav>
     </header>
-    <main class="container" >
-        <form action="../controller/AutoController.php" method="POST">
-            <label for="">Marca</label>
-            <select name="tipo" id="">
-                <option value="Moto">Moto</option>
-                <option value="Carro">Carro</option>
-                <option value="Bus">Bus</option>
-                <option value="Camion">Camion</option>
-            </select>
-            <label for="">Placa</label>
-            <input type="text" name="placa" id="" placeholder="Placa" maxlength = "6">
-            <input type="submit" value="Subir" name="ingresar">
-        </form>
+    <main class="container d-flex justify-content-center" >
+        <div class="card col-md-5 " style="padding: 10px;">
+            <div class="col-md-12 ">
+                <form action="../controller/AutoController.php" method="POST" name = "form">
+                    <div class="form-group">
+                        <label for="">Marca</label>
+                        <select name="tipo" id="" class="form-control">
+                            <option value="Moto">Moto</option>
+                            <option value="Carro">Carro</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Camion">Camion</option>
+                        </select>
+                    </div><br>
+                    <div class="form-group">
+                       <label for="">Placa</label>
+                        <input type="text" name="placa" id="" class="form-control" placeholder="Placa" maxlength = "6"> 
+                    </div><br>
+                    <div class="form-group">
+                       <label for="">Nombre</label>
+                        <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre" maxlength = "6"> 
+                    </div><br>
+                    <div class="form-group">
+                       <label for="">Apellido</label>
+                        <input type="text" name="apellido" id="" class="form-control" placeholder="Apellido" maxlength = "6"> 
+                    </div><br>
+                    <div class="form-group">
+                       <label for="">Cedula</label>
+                        <input type="text" name="cedula" id="" class="form-control" placeholder="Cedula" > 
+                    </div><br>
+                    <div class="form-group" style="text-align: center;">
+                        <input type="submit" value="Subir" name="ingresar" id="in" class="btn btn-success col-md-6 ">
+                    </div>
+                </form>    
+            </div>
+        </div>
     </main>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/datatables/media/js/jquery.dataTables.js"></script>
     <script src="../src/javascript/dataTable.js"></script>
+    <script src="../src/javascript/main.js"></script>
 </body>
 </html>

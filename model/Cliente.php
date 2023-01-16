@@ -1,5 +1,5 @@
 <?php
-require $_SERVER["DOCUMENT_ROOT"] .'/Ticket/model/connection.php';
+require_once $_SERVER["DOCUMENT_ROOT"] .'/Ticket/model/connection.php';
 class Cliente extends Conexion{
     protected $table;
     public function __construct(){

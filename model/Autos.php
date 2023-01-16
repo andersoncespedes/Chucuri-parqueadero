@@ -7,6 +7,7 @@ class Auto extends Conexion{
         $this->table = 'autos';
     }
     public function init(){
+        
         return $this->connect();
     }
 }

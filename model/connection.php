@@ -1,5 +1,5 @@
 <?php 
-require $_SERVER["DOCUMENT_ROOT"] .'/Ticket/config.php';
+require_once $_SERVER["DOCUMENT_ROOT"] .'/Ticket/config.php';
     class Conexion{
         private $db_name;
         private $db_host;

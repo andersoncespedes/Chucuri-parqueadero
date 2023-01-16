@@ -54,5 +54,6 @@ $id = 1;
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/datatables/media/js/jquery.dataTables.js"></script>
     <script src="src/javascript/dataTable.js"></script>
+    
 </body>
 </html>

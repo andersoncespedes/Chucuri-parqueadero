@@ -1,4 +1,4 @@
-<?php require $_SERVER["DOCUMENT_ROOT"] .'/Ticket/model/Autos.php';
+<?php require_once $_SERVER["DOCUMENT_ROOT"] .'/Ticket/model/Autos.php';
 class AutoController extends Auto{
     public function __construct(){
         parent::__construct();
@@ -14,13 +14,21 @@ class AutoController extends Auto{
         }
     }
     public function guardar($param){
+       include_once "ClienteController.php";
         try{
             $stmt = $this->init()->prepare("INSERT INTO ".$this->table."(tipo_veh, placa) 
-            VALUES ('".$param['tipo']."',  '".strtoupper($param['placa'])."')");
-            $stmt->execute();
+            VALUES (?,?)");
+            if($stmt->execute([$param['tipo'], strtoupper($param['placa'])])){
+                $rs = $this->init()->prepare("SELECT MAX(id_auto) AS id FROM " .$this->table);
+                $rs->execute();
+                $rs->setFetchMode(PDO::FETCH_ASSOC);
+            }
+            $id = $rs->fetch()['id'];
+            $Cliente = new ClienteController;
+            $Cliente->save($param, $id);
             return true;
         }catch(PDOException $e){
-            echo "Error" .$e;
+            echo "Error " .$e;
             return false;
         }
         
@@ -32,10 +40,10 @@ $x = $auto->mostrar();
 if($_POST){
     if($_POST['ingresar']){
         if($auto->guardar($_POST)){
-            header('location:../');
+            header('location: ../');
         }
         else{
-            header('location:../');
+           header('location: ../');
         }
     }
 }

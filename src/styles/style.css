@@ -20,7 +20,6 @@ header nav ul li{
 header nav ul li a{
     display: block;
     padding: 20px;
-
     text-decoration: none;
     color: black;
 }
@@ -31,6 +30,6 @@ header nav ul li a{
 .table-container{
     background-color: white;
     border-radius: 16px;
-    border: 2px solid black;
+    box-shadow: 0 0 5px black;
     padding: 20px;
 }
