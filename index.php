@@ -19,13 +19,16 @@ $id = 1;
         <nav> 
                 <ul>
                     <li><a href="">Home</a></li>
-                    <li><a href="">Carros</a></li>
+                    <li><a href="">Factura</a></li>
                     <li><a href="vistas/cliente.php">Cliente</a></li>
+                    <li style="float: right;"><a href="" id="hora" ></a></li>
                 </ul>
         </nav>
     </header>
     <main class="container" >
     <div class="table-container">
+    
+
         <div class="titulo-tabla">
             <h2>Lista de Autos</h2>
         </div>
@@ -41,19 +44,26 @@ $id = 1;
                     <?php  while ($row = $x->fetch()) {?>
                         <tr>
                             <td><?=$id?></td>
-                            <td><?=$row['tipo_veh']?></td>
+                            <td id= "veh"><?=$row['tipo_veh']?></td>
                             <td><?=$row['placa']?></td>
                         </tr>
-                    <?php $id++; } ?>
+                    <?php $id++; } 
+                    $x->closeCursor();
+                    ?>
                 </tbody>
             </table>
             <a href="vistas/ingresar_autos.php" class="btn btn-success">Ingresar Datos</a>
     </div>
        
     </main>
+    <?php require_once 'vistas/footer.php' ?>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/datatables/media/js/jquery.dataTables.js"></script>
+    <script>
+    let m = true;
+    </script>
     <script src="src/javascript/dataTable.js"></script>
+    <script src="src/javascript/main.js"></script>
     
 </body>
 </html>

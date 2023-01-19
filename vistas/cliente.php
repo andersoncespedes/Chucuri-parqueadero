@@ -5,27 +5,11 @@ $id = 1;
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href= "../node_modules/datatables/media/css/jquery.dataTables.css">
-    <link rel="stylesheet" href= "../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href= "../src/styles/style.css">
-    <title><?= APP_NAME ?></title>
-</head>
-<body>
-    <header>
-        <nav> 
-                <ul>
-                    <li><a href="../">Home</a></li>
-                    <li><a href="">Carros</a></li>
-                    <li><a href="">Cliente</a></li>
-                </ul>
-        </nav>
-    </header>
+    <?php require_once 'header.php' ?>
+
     <main class="container" >
     <div class="table-container">
+        
         <div class="titulo-tabla">
             <h2>Lista de Clientes</h2>
         </div>
@@ -48,14 +32,18 @@ $id = 1;
                             <td><?=$row['cedula']?></td>
                             <td><?=$row['id_auto']?></td>
                         </tr>
-                    <?php $id++; } ?>
+                    <?php $id++; } 
+                    $x->closeCursor();
+                    ?>
                 </tbody>
             </table>
     </div>
-       
     </main>
+    <?php require_once 'footer.php' ?>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/datatables/media/js/jquery.dataTables.js"></script>
+    <script>let m = false;</script>
     <script src="../src/javascript/dataTable.js"></script>
+    <script src="../src/javascript/main.js"></script>
 </body>
 </html>

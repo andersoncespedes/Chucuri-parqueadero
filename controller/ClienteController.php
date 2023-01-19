@@ -16,9 +16,12 @@ class ClienteController extends Cliente{
     }
     public function save($param,$id){
         try{
-            $stmt = $this->init()->prepare("INSERT INTO ".$this->table."(nombres, apellidos, cedula,id_auto) 
-            VALUES ('".$param['nombre']."',  '".$param['apellido']."',  '".$param['cedula']."', '".$id."')");
+            $stmt = $this->init()->prepare("INSERT INTO ".$this->table."(nombres, apellidos, cedula,id_auto, direccion) 
+            VALUES ('".$param['nombre']."',  '".$param['apellido']."',  '".$param['cedula']."', '".$id."', '".$param['direccion']."')");
             $stmt->execute();
+            $stmt->closeCursor();
+            $this->close($this->init());
+            $stmt = null;
             return true;
         }catch(PDOException $e){
             echo "Error" .$e;

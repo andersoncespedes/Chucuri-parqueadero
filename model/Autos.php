@@ -6,8 +6,15 @@ class Auto extends Conexion{
         parent::__construct();
         $this->table = 'autos';
     }
+    public function authentific($param):bool{
+        foreach($param as $key => $val){
+            if(empty($val)){
+                return false;
+            }
+        }
+        return true;
+    }
     public function init(){
-        
         return $this->connect();
     }
 }

@@ -5,24 +5,34 @@
 }
 body{
     background-color: rgb(226, 223, 223);
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    
 }
 header{
     width: 100%;
+    box-shadow: 0 0 5px black;
+    align-self: flex-start;
     font-size: 22px;
-    background-color: red;
+    background-color: #7afb50;
+    
 }
 header nav ul{
     list-style: none;
+    width: 100%;
 }
 header nav ul li{
     display: inline-block;
 }
 header nav ul li a{
     display: block;
+    transition: 300ms all ease;
     padding: 20px;
     text-decoration: none;
     color: black;
 }
+
 .titulo-tabla{
     width: 100%;
     text-align: center;
@@ -32,4 +42,19 @@ header nav ul li a{
     border-radius: 16px;
     box-shadow: 0 0 5px black;
     padding: 20px;
+}
+#placa{
+    height: 90px; display:block; 
+    background-color:gold; 
+    color:black; 
+    font-size:60px; 
+    border-radius:20px; 
+    text-align:center;
+}
+footer{
+    width: 100%;
+    box-shadow: 0 0 5px black;
+    background-color: black;
+    color: white;
+    align-self: flex-end;
 }

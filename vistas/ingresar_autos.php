@@ -5,61 +5,62 @@ $id = 1;
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href= "../node_modules/datatables/media/css/jquery.dataTables.css">
-    <link rel="stylesheet" href= "../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href= "../src/styles/style.css">
-    <title><?= APP_NAME ?></title>
-</head>
-<body>
-    <header>
-        <nav> 
-                <ul>
-                    <li><a href="../">Home</a></li>
-                    <li><a href="">Carros</a></li>
-                    <li><a href="">Cliente</a></li>
-                </ul>
-        </nav>
-    </header>
+    <?php require_once 'header.php' ?>
     <main class="container d-flex justify-content-center" >
-        <div class="card col-md-5 " style="padding: 10px;">
-            <div class="col-md-12 ">
+        <div class="card col-md-6 " style="padding: 10px;margin-top:10px ; margin-bottom:10px">
+            <div class="col-md-12 " >
                 <form action="../controller/AutoController.php" method="POST" name = "form">
-                    <div class="form-group">
-                        <label for="">Marca</label>
-                        <select name="tipo" id="" class="form-control">
-                            <option value="Moto">Moto</option>
-                            <option value="Carro">Carro</option>
-                            <option value="Bus">Bus</option>
-                            <option value="Camion">Camion</option>
-                        </select>
-                    </div><br>
-                    <div class="form-group">
-                       <label for="">Placa</label>
-                        <input type="text" name="placa" id="" class="form-control" placeholder="Placa" maxlength = "6"> 
-                    </div><br>
-                    <div class="form-group">
-                       <label for="">Nombre</label>
-                        <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre" maxlength = "6"> 
-                    </div><br>
-                    <div class="form-group">
-                       <label for="">Apellido</label>
-                        <input type="text" name="apellido" id="" class="form-control" placeholder="Apellido" maxlength = "6"> 
-                    </div><br>
-                    <div class="form-group">
-                       <label for="">Cedula</label>
-                        <input type="text" name="cedula" id="" class="form-control" placeholder="Cedula" > 
-                    </div><br>
-                    <div class="form-group" style="text-align: center;">
-                        <input type="submit" value="Subir" name="ingresar" id="in" class="btn btn-success col-md-6 ">
+                    <div id= "veh-form">
+                        <h2>Datos del Carro</h2>
+                        <div class="form-group">
+                            <label for="">Tipo de Parqueamiento</label>
+                            <select name="tip_parq" class="form-control" id="">
+                                <option value="Diario">Diario</option>
+                                <option value="Mensual">Mensual</option>
+                                <option value="Fijo">Fijo</option>
+                            </select>
+                        </div><br>
+                        <div class="form-group">
+                            <label for="">Tipo de Vehiculo</label>
+                            <select name="tipo" id="" class="form-control">
+                                <option value="Moto">Moto</option>
+                                <option value="Carro">Carro</option>
+                                <option value="Bus">Bus</option>
+                                <option value="Camion">Camion</option>
+                            </select>
+                        </div><br>
+                        <div class="form-group">
+                        <label for="">Placa</label>
+                            <input type="text" name="placa" id="placa" class="col-md-12"  placeholder="PLACA" required> 
+                        </div><br>
+                        <button type="button" id="siguiente" style="float: right;">siguiente</button>
+                    </div>
+                    <div id="clien-form" style="display: none;"> 
+                        <div class="form-group">
+                        <label for="">Nombre</label>
+                            <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre" required> 
+                        </div><br>
+                        <div class="form-group">
+                        <label for="">Apellido</label>
+                            <input type="text" name="apellido" id="" class="form-control" placeholder="Apellido" required> 
+                        </div><br>
+                        <div class="form-group">
+                        <label for="">Cedula</label>
+                            <input type="number" name="cedula" id="" class="form-control" placeholder="Cedula" required> 
+                        </div><br>
+                        <div class="form-group">
+                            <label for="">Direccion</label>
+                            <textarea name="direccion" id="" cols="10" rows="5"  class="form-control" required></textarea>
+                        </div><br>
+                        <div class="form-group" style="text-align: center;">
+                            <input type="submit" value="Subir" name="ingresar" id="in" class="btn btn-success col-md-6 ">
+                        </div>
                     </div>
                 </form>    
             </div>
         </div>
     </main>
+    <?php require_once 'footer.php' ?>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/datatables/media/js/jquery.dataTables.js"></script>
     <script src="../src/javascript/dataTable.js"></script>

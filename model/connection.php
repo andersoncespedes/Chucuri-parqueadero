@@ -22,5 +22,8 @@ require_once $_SERVER["DOCUMENT_ROOT"] .'/Ticket/config.php';
             $co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
              return $co; 
         }
+        public function close($param){
+            $param = null;
+        }
     }
 ?>
