@@ -15,10 +15,18 @@ class ClienteController extends Cliente{
         
     }
     public function save($param,$id){
+        require_once 'FacturaController.php';
         try{
-            $stmt = $this->init()->prepare("INSERT INTO ".$this->table."(nombres, apellidos, cedula,id_auto, direccion) 
-            VALUES ('".$param['nombre']."',  '".$param['apellido']."',  '".$param['cedula']."', '".$id."', '".$param['direccion']."')");
-            $stmt->execute();
+            $stmt = $this->init()->prepare("INSERT INTO ".$this->table."(nombres, apellidos, id_auto) 
+            VALUES ('".$param['nombre']."',  '".$param['apellido']."', '".$id."')");
+            if($stmt->execute()){
+                $rs = $this->init()->prepare("SELECT MAX(id_cliente) AS id FROM " .$this->table);
+                $rs->execute();
+                $rs->setFetchMode(PDO::FETCH_ASSOC);
+                $id_cliente = $rs->fetch()['id'];
+                $factura = new FacturaController;
+                $factura->save($param, $id, $id_cliente);
+            }
             $stmt->closeCursor();
             $this->close($this->init());
             $stmt = null;

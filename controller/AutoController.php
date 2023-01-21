@@ -30,7 +30,6 @@ class AutoController extends Auto{
                 $rs->setFetchMode(PDO::FETCH_ASSOC);
             }
             $id = $rs->fetch()['id'];
-            
             $Cliente = new ClienteController;
             $Cliente->save($param, $id);
             $Park = new ParkController;
@@ -38,6 +37,7 @@ class AutoController extends Auto{
                 $rs->closeCursor();
                 $rs = null;
             }
+            $this->close($this->init());
             return true;
         }catch(PDOException $e){
             echo "Error " .$e;
@@ -54,7 +54,7 @@ if($_POST){
             header('location: ../');
         }
         else{
-           header('location: ../');
+           header('location: ../?error=registro');
         }
     }
 }

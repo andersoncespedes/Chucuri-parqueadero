@@ -14,7 +14,6 @@ header{
     width: 100%;
     box-shadow: 0 0 5px black;
     align-self: flex-start;
-    font-size: 22px;
     background-color: #7afb50;
     
 }
@@ -27,6 +26,7 @@ header nav ul li{
 }
 header nav ul li a{
     display: block;
+    font-size: 22px;
     transition: 300ms all ease;
     padding: 20px;
     text-decoration: none;
@@ -43,7 +43,7 @@ header nav ul li a{
     box-shadow: 0 0 5px black;
     padding: 20px;
 }
-#placa{
+.placa{
     height: 90px; display:block; 
     background-color:gold; 
     color:black; 

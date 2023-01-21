@@ -5,6 +5,7 @@
     <link rel="stylesheet" href= "../node_modules/datatables/media/css/jquery.dataTables.css">
     <link rel="stylesheet" href= "../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href= "../src/styles/style.css">
+    
     <title><?= APP_NAME ?></title>
 </head>
 <body>
@@ -12,7 +13,7 @@
         <nav> 
                 <ul>
                     <li><a href="../">Home</a></li>
-                    <li><a href="">Factura</a></li>
+                    <li><a href="./factura.php">Factura</a></li>
                     <li><a href="./cliente.php">Cliente</a></li>
                     <li style="float: right;"><a href="" id="hora" ></a></li>
                 </ul>

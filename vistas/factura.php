@@ -1,5 +1,5 @@
 <?php 
-include_once $_SERVER['DOCUMENT_ROOT'] .'/Ticket/controller/ClienteController.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/Ticket/controller/FacturaController.php';
 $id = 1;
 ?>
 
@@ -17,18 +17,16 @@ $id = 1;
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Auto</th>
+                        <th>Fecha</th>
+                        <th>Valor</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php  while ($row = $x->fetch()) {?>
                         <tr>
                             <td><?=$id?></td>
-                            <td><?=$row['nombres']?></td>
-                            <td><?=$row['apellidos']?></td>
-                            <td><?=$row['id_auto']?></td>
+                            <td><?=$row['fecha']?></td>
+                            <td><?=$row['valor']?></td>
                         </tr>
                     <?php $id++; } 
                     $x->closeCursor();

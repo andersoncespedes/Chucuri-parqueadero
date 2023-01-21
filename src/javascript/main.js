@@ -1,4 +1,9 @@
 (function() {
+    const veh = document.getElementById('veh-form');
+    const clien = document.getElementById('clien-form');
+    const plac = document.getElementById('plac_sh');
+    const monto = document.getElementById('monto');
+    const sig = document.getElementById('siguiente');
     setInterval(function(){
         let date = new Date();
         let hours = (date.getHours() > 12 ? date.getHours() - 12 : date.getHours())
@@ -17,7 +22,7 @@
     Auth.prototype.placa = function(){
         let placa = this.param.placa.value;
         let tipo = this.param.tipo.value;
-        let expreg = tipo == "Moto" ? /^[0-9]{3}[A-Za-z]{3}/ : /[A-Za-z]{6}/;
+        let expreg = tipo == "Moto" ? /^[0-9]{3}[A-Za-z]{3}/ : tipo == "Carro" ? /[A-Za-z]{3}[0-9]{3}/ : /[A-Za-z]{3}[0-9]{3}/ ;
         if(!expreg.test(placa)){
             alert('NO');
             this.ev.preventDefault();
@@ -50,17 +55,31 @@
         auth.placa();
         auth.cedula();
     });
-
-    const veh = document.getElementById('veh-form');
-    const clien = document.getElementById('clien-form');
-    const sig = document.getElementById('siguiente');
-
+    datos[0].entrada.addEventListener('change', function(){
+        let result =  datos[0].salida.value.split(':')[0] - this.value.split(':')[0];
+        datos[0].monto_tot.value = result * monto.value;
+        console.log(result);
+    });
+    datos[0].salida.addEventListener('change', function(){
+        let result = this.value.split(':')[0] - datos[0].entrada.value.split(':')[0];
+        datos[0].monto_tot.value = result * monto.value;
+        console.log(result);
+    });
     sig.addEventListener("click", function(ev){
         let auth = new Auth(datos, ev);
         if(auth.placa()){
+            console.log(plac.value);
             veh.style.display = "none";
             clien.style.display = "block";
+            
+            plac.value = datos[0].placa.value;
+            if(datos[0].tipo.value == 'Moto'){
+                monto.value = 7300;
+            }
+            else if(datos[0].tipo.value == 'Carro'){
+                monto.value = 9300;
+            }
+            
         }
-    })
-    console.log('funciona');
+    });
 })();
