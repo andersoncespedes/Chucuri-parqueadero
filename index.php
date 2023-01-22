@@ -20,7 +20,6 @@ $id = 1;
                 <ul>
                     <li><a href="">Home</a></li>
                     <li><a href="">Factura</a></li>
-                    <li><a href="vistas/cliente.php">Cliente</a></li>
                     <li style="float: right;"><a href="" id="hora" ></a></li>
                 </ul>
         </nav>

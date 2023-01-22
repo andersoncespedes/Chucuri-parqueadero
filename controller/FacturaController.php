@@ -17,9 +17,9 @@ class FacturaController extends Factura{
     public function save($param, $id_auto, $id_cliente){
         try{
             $hoy = date("Y-m-d H:i:s");
-            $stmt = $this->init()->prepare("INSERT INTO ".$this->table."(id_auto, id_cliente, fecha, valor) 
-            VALUES (?,?,?,?)");
-            $stmt->execute([$id_auto, $id_cliente,$hoy, $param['monto_tot']]);
+            $stmt = $this->init()->prepare("INSERT INTO ".$this->table."(id_auto, fecha, valor) 
+            VALUES (?,?,?)");
+            $stmt->execute([$id_auto,$hoy, $param['monto_tot']]);
             $stmt->closeCursor();
             $stmt = null;
             $this->close($this->init());

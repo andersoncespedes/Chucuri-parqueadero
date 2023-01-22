@@ -1,5 +1,5 @@
 <?php 
-include_once $_SERVER['DOCUMENT_ROOT'] .'/Ticket/controller/ClienteController.php';
+include_once $_SERVER['DOCUMENT_ROOT'] .'/Ticket/controller/AutoController.php';
 $id = 1;
 ?>
 
@@ -38,19 +38,9 @@ $id = 1;
                     </div>
                     <div id="clien-form" style="display: none;" class="col-md-6"> 
                         <div class="form-group">
-                        <label for="">Nombre</label>
-                            <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre" required> 
-                        </div><br>
-                        <div class="form-group">
-                        <label for="">Apellido</label>
-                            <input type="text" name="apellido" id="" class="form-control" placeholder="Apellido" required> 
-                        </div><br>
-                        <div class="form-group">
                             <label for="">Entrada</label>
-                            <input type="time" name="entrada" id="entrada" class="form-control">
-                            <label for="">Salida</label>
-                            <input type="time" name="salida" id="salida" class="form-control">
-                        </div>
+                            <input type="datetime-local" name="entrada" id="entrada" class="form-control">
+                        </div><br>
                         <div class="form-group" style="text-align: center;">
                             <input type="submit" value="Subir" name="ingresar" id="in" class="btn btn-success col-md-6 ">
                         </div>

@@ -1,3 +1,7 @@
+<?php 
+include_once $_SERVER['DOCUMENT_ROOT'] .'/Ticket/controller/FacturaController.php';
+$id = 1;
+?>
 <head>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +18,6 @@
                 <ul>
                     <li><a href="../">Home</a></li>
                     <li><a href="./factura.php">Factura</a></li>
-                    <li><a href="./cliente.php">Cliente</a></li>
                     <li style="float: right;"><a href="" id="hora" ></a></li>
                 </ul>
         </nav>

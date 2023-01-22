@@ -14,7 +14,6 @@ class AutoController extends Auto{
         }
     }
     public function guardar($param){
-       include_once "ClienteController.php";
        include_once "ParkController.php";
        if(!$this->authentific($param)){
         return false;
@@ -30,8 +29,6 @@ class AutoController extends Auto{
                 $rs->setFetchMode(PDO::FETCH_ASSOC);
             }
             $id = $rs->fetch()['id'];
-            $Cliente = new ClienteController;
-            $Cliente->save($param, $id);
             $Park = new ParkController;
             if($Park->save($param, $id)){
                 $rs->closeCursor();

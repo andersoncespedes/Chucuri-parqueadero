@@ -53,25 +53,20 @@
     datos[0].in.addEventListener('click', function(ev){
          let auth = new Auth(datos, ev);
         auth.placa();
-        auth.cedula();
     });
-    datos[0].entrada.addEventListener('change', function(){
-        let result =  datos[0].salida.value.split(':')[0] - this.value.split(':')[0];
-        datos[0].monto_tot.value = result * monto.value;
-        console.log(result);
-    });
-    datos[0].salida.addEventListener('change', function(){
-        let result = this.value.split(':')[0] - datos[0].entrada.value.split(':')[0];
-        datos[0].monto_tot.value = result * monto.value;
-        console.log(result);
-    });
+
     sig.addEventListener("click", function(ev){
         let auth = new Auth(datos, ev);
+        let date = new Date();
+        let hours = (date.getHours() > 12 ? date.getHours() - 12 : date.getHours())
+            datos[0].entrada.value = `
+            ${(hours < 10 ? '0' + hours : hours)}:
+            ${date.getMinutes() < 10 ? '0' + date.getMinutes(): date.getMinutes()}:
+            ${date.getSeconds() < 10 ? '0' + date.getSeconds(): date.getSeconds()}`
         if(auth.placa()){
             console.log(plac.value);
             veh.style.display = "none";
             clien.style.display = "block";
-            
             plac.value = datos[0].placa.value;
             if(datos[0].tipo.value == 'Moto'){
                 monto.value = 7300;
