@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "datatables": "^1.10.18"
+    "datatables": "^1.10.18",
+    "icofont": "^1.0.0"
   }
 }

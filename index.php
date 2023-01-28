@@ -11,6 +11,7 @@ $id = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href= "./node_modules/datatables/media/css/jquery.dataTables.css">
     <link rel="stylesheet" href= "./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href= "./node_modules/icofont/dist/icofont.css">
     <link rel="stylesheet" href= "./src/styles/style.css">
     <title><?= APP_NAME ?></title>
 </head>
@@ -18,8 +19,9 @@ $id = 1;
     <header>
         <nav> 
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Factura</a></li>
+                    <li><a href=""><span class="icofont-home"></span>Home</a></li>
+                    <li><a href="vistas/factura.php"><span class="icofont-ticket"></span>Factura</a></li>
+                    <li><a href="vistas/stats.php"><span class="icofont-macbook"></span>Desktop</a></li>
                     <li style="float: right;"><a href="" id="hora" ></a></li>
                 </ul>
         </nav>

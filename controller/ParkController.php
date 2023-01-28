@@ -4,6 +4,8 @@ class ParkController extends Park{
         parent::__construct();
     }
     public function save($param, $id){
+       include_once "FacturaController.php";
+
         if($param['tip_parq'] == 'Mensual'){
             $this->table = 'mensual_a';
         }
@@ -14,7 +16,10 @@ class ParkController extends Park{
             $hoy = date("Y-m-d H:i:s");
             $stmt = $this->init()->prepare("INSERT INTO ".$this->table."(id_auto, entrada) 
             VALUES (?,?)");
-            $stmt->execute([$id, $hoy]);
+            $factura = new FacturaController;
+            if($stmt->execute([$id, $hoy])){
+                $factura->save($param, $id);
+            }
             $stmt->closeCursor();
             $stmt = null;
             return true;
@@ -24,4 +29,5 @@ class ParkController extends Park{
         }
         
     }
+    
 }

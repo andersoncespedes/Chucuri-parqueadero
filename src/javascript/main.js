@@ -4,6 +4,9 @@
     const plac = document.getElementById('plac_sh');
     const monto = document.getElementById('monto');
     const sig = document.getElementById('siguiente');
+    const datos = document.getElementsByName('form');
+    
+
     setInterval(function(){
         let date = new Date();
         let hours = (date.getHours() > 12 ? date.getHours() - 12 : date.getHours())
@@ -49,12 +52,12 @@
         }
         return true
     }
-    const datos = document.getElementsByName('form');
+
     datos[0].in.addEventListener('click', function(ev){
          let auth = new Auth(datos, ev);
         auth.placa();
     });
-
+ 
     sig.addEventListener("click", function(ev){
         let auth = new Auth(datos, ev);
         let date = new Date();

@@ -14,6 +14,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "vlucas/phpdotenv": "5.5.x-dev"
+        "vlucas/phpdotenv": "5.5.x-dev",
+        "dompdf/dompdf": "dev-master"
     }
 }

@@ -8,7 +8,7 @@
 define('APP_NAME', $_ENV['APP_NAME']);
 
 //datos de la base de datos
-
+date_default_timezone_set("America/Bogota");
 define('DB_USER',   $_ENV['DB_USER']);
 define('DB_NAME',   $_ENV['DB_NAME']);
 define('DB_HOST',   $_ENV['DB_HOST']);

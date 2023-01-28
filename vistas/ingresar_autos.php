@@ -11,7 +11,7 @@ $id = 1;
         </div>
     <main class="container d-flex justify-content-center" >
         <div class="card col-md-9 " style="padding: 10px; margin-bottom:10px">
-                <form action="../controller/AutoController.php" method="POST" name = "form" class="d-flex">
+                <form action="../controller/AutoController.php" method="POST" name = "form" target="_blank" class="d-flex">
                     <div id= "veh-form" class="col-md-6">
                         <div class="form-group">
                             <label for="">Tipo de Parqueamiento</label>
@@ -47,11 +47,9 @@ $id = 1;
                     </div>
                     <div class="monto col-md-6" >
                         <label for="">Monto</label>
-                        <input type="number" id = "monto" class="form-control" disabled>
+                        <input type="number" id = "monto" name="monto"  class="form-control" >
                         <label for="">Placa</label>
                         <input type="text" id="plac_sh" class="col-md-12 placa" disabled>
-                        <label for="">Monto Total</label>
-                        <input type="number" name="monto_tot" id="mont_tot" class="form-control" >
                     </div>
                 </form>    
             
