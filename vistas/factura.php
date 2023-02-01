@@ -9,7 +9,7 @@ $z = $factura->mostrarInact();
 <html lang="en">
     <?php require_once 'header.php' ?>
 
-    <main class="container" >
+    <main class="container"  >
     <div class="table-container">
         
         <div class="titulo-tabla">
@@ -97,9 +97,9 @@ $z = $factura->mostrarInact();
     ?>
     <script>
         const activo = document.getElementById('a');
-    const inactivo = document.getElementById('b');
-    const activobtn = document.getElementById('activo');
-    const inactivobtn = document.getElementById('inactivo');
+        const inactivo = document.getElementById('b');
+        const activobtn = document.getElementById('activo');
+        const inactivobtn = document.getElementById('inactivo');
     activobtn.addEventListener('click',function(){
         activo.style.display = "block";
         inactivo.style.display = "none";

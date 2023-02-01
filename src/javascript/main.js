@@ -5,6 +5,10 @@
     const monto = document.getElementById('monto');
     const sig = document.getElementById('siguiente');
     const datos = document.getElementsByName('form');
+    const hoy = document.getElementById('hoy');
+    hoy.addEventListener('click', function (){
+        document.getElementById('entrada').disabled = true;
+    });
     
 
     setInterval(function(){
@@ -71,11 +75,29 @@
             veh.style.display = "none";
             clien.style.display = "block";
             plac.value = datos[0].placa.value;
-            if(datos[0].tipo.value == 'Moto'){
-                monto.value = 7300;
+            if(datos[0].tipo.value == 'Moto' && datos[0].tip_parq.value == 'Hora'){
+                monto.value = 1000;
             }
-            else if(datos[0].tipo.value == 'Carro'){
-                monto.value = 9300;
+            if(datos[0].tipo.value == 'Moto' && datos[0].tip_parq.value == 'Diario'){
+                monto.value = 6000;
+            }
+            if(datos[0].tipo.value == 'Moto' && datos[0].tip_parq.value == 'Mensual'){
+                monto.value = 50000;
+            }
+            if(datos[0].tipo.value == 'Carro' && datos[0].tip_parq.value == "Hora"){
+                monto.value = 2000;
+            }
+            if(datos[0].tipo.value == 'Carro' && datos[0].tip_parq.value == "Diario"){
+                monto.value = 15000;
+            }
+            if(datos[0].tipo.value == 'Carro' && datos[0].tip_parq.value == "Mensual"){
+                monto.value = 80000;
+            }
+            if(datos[0].tipo.value == 'Bus'){
+                monto.value = 150000;
+            }
+            if(datos[0].tipo.value == 'Camion'){
+                monto.value = 150000;
             }
             
         }

@@ -15,15 +15,15 @@ $id = 1;
                     <div id= "veh-form" class="col-md-6">
                         <div class="form-group">
                             <label for="">Tipo de Parqueamiento</label>
-                            <select name="tip_parq" id="" class="form-control">
+                            <select name="tip_parq" id="" class="form-control" >
                                 <option value="Diario">Diario</option>
                                 <option value="Mensual">Mensual</option>
-                                <option value="Fijo">Fijo</option>
+                                <option value="Hora">Hora</option>
                             </select>
                         </div><br>
                         <div class="form-group">
                             <label for="">Tipo de Vehiculo</label>
-                            <select name="tipo" id="" class="form-control">
+                            <select name="tipo" id="" class="form-control" >
                                 <option value="Moto">Moto</option>
                                 <option value="Carro">Carro</option>
                                 <option value="Bus">Bus</option>
@@ -40,6 +40,8 @@ $id = 1;
                         <div class="form-group">
                             <label for="">Entrada</label>
                             <input type="datetime-local" name="entrada" id="entrada" class="form-control">
+                            <input type="checkbox" class="form-check-input" id="hoy">
+                            <label for="">Hoy</label>
                         </div><br>
                         <div class="form-group" style="text-align: center;">
                             <input type="submit" value="Subir" name="ingresar" id="in" class="btn btn-success col-md-6 ">

@@ -1,14 +1,35 @@
 <?php ob_start();
 date_default_timezone_set("America/Bogota");
 $medidaTicket = 180;
-$finalDa = preg_split('/[  ]/',$datos['fecha'])[1];
-$calc = ((date('H') - preg_split('/[:]/',$finalDa)[0]));
-if($calc == 0){
-    $calc = $datos['valor'];
+$finalDa = preg_split('/[  ]/',$datos['fecha']);
+if($datos['tipo_fact'] == "Hora"){
+    $calc = ((date('H') - preg_split('/[:]/',$finalDa[1])[0]));
+    if($calc == 0){
+        $calc = $datos['valor'];
+    }
+    else{
+       $calc *= $datos['valor']; 
+    }
 }
-else{
-    $calc *= $datos['valor'];
+if($datos['tipo_fact'] == "Diario"){
+    $result = date('d') - preg_split('/[-]/',$finalDa[0])[2];
+    if($result == 0){
+        $calc = $datos['valor'];
+    }
+    else{
+        $calc = $datos['valor'] * $result;
+    }
 }
+if($datos['tipo_fact'] == "Diario"){
+    $result = date('m') - preg_split('/[-]/',$finalDa[0])[1];
+    if($result == 0){
+        $calc = $datos['valor'];
+    }
+    else{
+        $calc = $datos['valor'] * $result;
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,7 +142,6 @@ else{
             </tr>
         </table>
         <p class="centrado">¡GRACIAS POR SU COMPRA!
-            <br>parzibyte.me</p>
     </div>
 </body>
 

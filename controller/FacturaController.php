@@ -30,6 +30,33 @@ class FacturaController extends Factura{
         }
         
     }
+    public function gainsByDay(){
+        try{
+            $stmt = $this->init()->prepare("SELECT SUM(monto_tot) as total FROM factura
+            WHERE salida BETWEEN '".date("Y-m-d")." 00:00:00' AND '".date("Y-m-d H:i:s")."' ");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC); 
+            $r = $stmt->fetch()['total'];
+            $stmt->closeCursor();
+            return $r;
+        }catch(PDOException $err){
+            return $err;
+        }
+    }
+    public function gainsByMonth(){
+        try{
+            $x = date("Y-m-01 00:00:00");
+            $stmt = $this->init()->prepare("SELECT SUM(monto_tot) as total FROM factura
+            WHERE salida BETWEEN '".$x."' AND '".date("Y-m-d H:i:s")."' ");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC); 
+            $r = $stmt->fetch()['total'];
+            $stmt->closeCursor();
+            return $r;
+        }catch(PDOException $err){
+            return $err;
+        }
+    }
     public function estAct(){
         try{
             $stmt = $this->init()->prepare("SELECT count(valor) as num FROM " .$this->table. " WHERE estado = 'activo'");
@@ -82,7 +109,15 @@ class FacturaController extends Factura{
     }
     public function save($param, $id_auto){
         try{
-            $hoy = date("Y-m-d H:i:s");
+            if(isset($param['entrada'])){
+                $hoy = str_replace("T", " ", $param['entrada']);
+            
+                printf($hoy);
+            }
+            else{
+                $hoy = date("Y-m-d H:i:s");
+            }
+            
             $stmt = $this->init()->prepare("INSERT INTO ".$this->table."(id_auto, fecha,valor,tipo_fact) 
             VALUES (?,?,?,?)");
             $stmt->execute([$id_auto,$hoy,$param['monto'], $param['tip_parq']]);
@@ -140,7 +175,6 @@ class FacturaController extends Factura{
 $factura = new FacturaController;
 if(isset($_GET['imprimir'])){
     $datos = $factura->facturaById($_GET['id']);
-    print_r($datos);
     include_once '../vistas/factura_final.php';
     $factura->generarFactura($html);
     $factura->inactivarFact($_GET['id'], date("Y-m-d H:i:s"), $calc);

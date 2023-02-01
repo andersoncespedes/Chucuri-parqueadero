@@ -85,33 +85,6 @@ $medidaTicket = 180;
         <h1>PARQUEADERO CHUCURI</h1>
         <h2>Ticket de venta #12</h2>
         <h2><?= date("d-m-Y H:i:s") ?></h2>
-        <?php
-        # Recuerda que este arreglo puede venir de cualquier lugar; aquí lo defino manualmente para simplificar
-        # Puedes obtenerlo de una base de datos, por ejemplo: https://parzibyte.me/blog/2019/07/17/php-bases-de-datos-ejemplos-tutoriales-conexion/
-
-        $productos = [
-            [
-                "cantidad" => 31,
-                "descripcion" => "Cheetos verdes 80 g",
-                "precio" => 123,
-            ],
-            [
-                "cantidad" => 12,
-                "descripcion" => "Teclado HyperX",
-                "precio" => 1233,
-            ],
-            [
-                "cantidad" => 12,
-                "descripcion" => "Mouse Logitech ASD123",
-                "precio" => 841,
-            ],
-            [
-                "cantidad" => 15,
-                "descripcion" => "Monitor Samsung 123",
-                "precio" => 3546,
-            ],
-        ];
-        ?>
         <?= $_GET['placa'] ?>
         <table>
             <thead>
@@ -125,7 +98,7 @@ $medidaTicket = 180;
                     <tr>
                         <td class="cantidad"> <?= $_GET['tipo'] ?> </td>
                         <td class="producto"> <?= $_GET['placa'] ?> </td>
-                        <td class="precio"> <?= $_GET['monto'] ?> d</td>
+                        <td class="precio"> <?= $_GET['monto'] ?>$</td>
                     </tr>
             </tbody>
             <tr>
@@ -139,7 +112,6 @@ $medidaTicket = 180;
             </tr>
         </table>
         <p class="centrado">¡GRACIAS POR SU COMPRA!
-            <br>parzibyte.me</p>
     </div>
 </body>
 

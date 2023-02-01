@@ -17,6 +17,9 @@ $id = 1;
 </head>
 <body>
     <header>
+    <div class="headP">
+            <h3><b style="color:rebeccapurple"> Parqueadero</b> <b style="color:red">Chucuri</b> </h3>
+        </div>
         <nav> 
                 <ul>
                     <li><a href=""><span class="icofont-home"></span>Home</a></li>

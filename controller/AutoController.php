@@ -70,7 +70,11 @@ if($_POST){
             header('location: ../vistas/rec_entrada.php?tipo='.$_POST['tipo'].'&placa='.$_POST['placa'].'&monto='.$_POST['monto']);
         }
         else{
-           
+           ?> 
+                <script>
+                    window.close();
+                </script>
+           <?php
         }
     }
 }

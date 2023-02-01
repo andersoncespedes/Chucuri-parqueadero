@@ -9,14 +9,23 @@ body{
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    
+
 }
 header{
     width: 100%;
     box-shadow: 0 0 5px black;
     align-self: flex-start;
     background-color: #1ea7e9;
-    
+    margin-bottom:10px;
+}
+.headP{
+    width:100%;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: white;
+    padding: 10px;
+}
+header nav{
+    width: 100%;
 }
 #b{
   display: none;  
@@ -60,8 +69,10 @@ header nav ul li a:hover{
 }
 footer{
     width: 100%;
+    margin-top:10px;
     box-shadow: 0 0 5px black;
     background-color: black;
     color: white;
+    padding: 10px;
     align-self: flex-end;
 }
