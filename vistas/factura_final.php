@@ -2,8 +2,16 @@
 date_default_timezone_set("America/Bogota");
 $medidaTicket = 180;
 $finalDa = preg_split('/[  ]/',$datos['fecha']);
+$difH = date('d') - preg_split('/[-]/',$finalDa[0])[2];
+$difM = date('Y') - preg_split('/[-]/',$finalDa[0])[0];
 if($datos['tipo_fact'] == "Hora"){
-    $calc = ((date('H') - preg_split('/[:]/',$finalDa[1])[0]));
+    if(preg_split('/[:]/',$finalDa[0])[2] > date('d')){
+        $resultF = (date('H')  + (24 * $difH));
+        $calc = $resultF - preg_split('/[:]/',$finalDa[1])[0];
+    }
+    if(preg_split('/[:]/',$finalDa[1])[0] < date('H') || preg_split('/[:]/',$finalDa[1])[0] == date('H') ){
+        $calc = date('H') - preg_split('/[:]/',$finalDa[1])[0];
+    }
     if($calc == 0){
         $calc = $datos['valor'];
     }
@@ -12,7 +20,14 @@ if($datos['tipo_fact'] == "Hora"){
     }
 }
 if($datos['tipo_fact'] == "Diario"){
-    $result = date('d') - preg_split('/[-]/',$finalDa[0])[2];
+    $mes_anterior = date("d", strtotime("last day of previous month"));
+    if(preg_split('/[-]/',$finalDa[0])[2] > date('d')){
+        $resultF = (date('d')  + $mes_anterior);
+        $result = $resultF - preg_split('/[-]/',$finalDa[0])[2];
+    }
+    if(preg_split('/[-]/',$finalDa[0])[2] < date('d') || preg_split('/[-]/',$finalDa[0])[2] == date('d')){
+        $result = date('d') - preg_split('/[-]/',$finalDa[0])[2];
+    }
     if($result == 0){
         $calc = $datos['valor'];
     }
@@ -20,8 +35,15 @@ if($datos['tipo_fact'] == "Diario"){
         $calc = $datos['valor'] * $result;
     }
 }
-if($datos['tipo_fact'] == "Diario"){
-    $result = date('m') - preg_split('/[-]/',$finalDa[0])[1];
+if($datos['tipo_fact'] == "Mensual"){
+    if(preg_split('/[-]/',$finalDa[0])[0] !== date('Y')){
+        $resultF = (date('m')  + (12 * $difM) );
+        $result = $resultF - preg_split('/[-]/',$finalDa[0])[1];
+    }
+    if(preg_split('/[-]/',$finalDa[0])[1] < date('m') || preg_split('/[-]/',$finalDa[0])[1] == date('m')){
+        $result = date('m') - preg_split('/[-]/',$finalDa[0])[1];
+    }
+
     if($result == 0){
         $calc = $datos['valor'];
     }

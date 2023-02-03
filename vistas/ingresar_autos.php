@@ -7,18 +7,21 @@ $id = 1;
 <html lang="en">
     <?php require_once 'header.php' ?>
         <div style="width:100%; text-align:center">
-            <h2>Datos de Factura</h2>
+            
         </div>
     <main class="container d-flex justify-content-center" >
-        <div class="card col-md-9 " style="padding: 10px; margin-bottom:10px">
-                <form action="../controller/AutoController.php" method="POST" name = "form" target="_blank" class="d-flex">
+        <div class="card col-md-9 " style=" margin-bottom:10px">
+        <div class="card-header" style="text-align: center;">
+            <h2>Datos de Factura</h2>
+        </div>
+                <form action="../controller/AutoController.php" method="POST" name = "form" target="_blank" class="d-flex" style="margin: 5px;">
                     <div id= "veh-form" class="col-md-6">
                         <div class="form-group">
                             <label for="">Tipo de Parqueamiento</label>
                             <select name="tip_parq" id="" class="form-control" >
+                                <option value="Hora">Hora</option>
                                 <option value="Diario">Diario</option>
                                 <option value="Mensual">Mensual</option>
-                                <option value="Hora">Hora</option>
                             </select>
                         </div><br>
                         <div class="form-group">
@@ -41,10 +44,10 @@ $id = 1;
                             <label for="">Entrada</label>
                             <input type="datetime-local" name="entrada" id="entrada" class="form-control">
                             <input type="checkbox" class="form-check-input" id="hoy">
-                            <label for="">Hoy</label>
+                            <label for="">Ahora</label>
                         </div><br>
                         <div class="form-group" style="text-align: center;">
-                            <input type="submit" value="Subir" name="ingresar" id="in" class="btn btn-success col-md-6 ">
+                            <input type="submit" value="Subir" name="in" id="in" class="btn btn-success col-md-6 ">
                         </div>
                     </div>
                     <div class="monto col-md-6" >

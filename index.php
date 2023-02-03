@@ -42,6 +42,7 @@ $id = 1;
                         <th>Id</th>
                         <th>Tipo de Vehiculo</th>
                         <th>Placa</th>
+                        <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +51,10 @@ $id = 1;
                             <td><?=$id?></td>
                             <td id= "veh"><?=$row['tipo_veh']?></td>
                             <td><?=$row['placa']?></td>
+                            <td>
+                                <a href="controller/AutoController.php?eliminar&id=<?=$row['id_auto']?>" class="btn btn-danger">Eliminar</a>
+                                <a href="vistas/modificar_auto.php?id=<?=$row['id_auto']?>" class="btn btn-success">Modificar</a>
+                            </td>
                         </tr>
                     <?php $id++; } 
                     $x->closeCursor();

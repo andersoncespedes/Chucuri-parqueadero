@@ -111,8 +111,6 @@ class FacturaController extends Factura{
         try{
             if(isset($param['entrada'])){
                 $hoy = str_replace("T", " ", $param['entrada']);
-            
-                printf($hoy);
             }
             else{
                 $hoy = date("Y-m-d H:i:s");
@@ -168,6 +166,7 @@ class FacturaController extends Factura{
         $numA = $auto->fetch()['num'];
 
         $factura->closeCursor();
+        $factura = null;
         $i = 0;
         return ["factura" => $numF, "auto" => $numA, "facturaAct" => $this->estAct(), "facturaInact" => $this->estInact()];
     }

@@ -6,11 +6,6 @@
     const sig = document.getElementById('siguiente');
     const datos = document.getElementsByName('form');
     const hoy = document.getElementById('hoy');
-    hoy.addEventListener('click', function (){
-        document.getElementById('entrada').disabled = true;
-    });
-    
-
     setInterval(function(){
         let date = new Date();
         let hours = (date.getHours() > 12 ? date.getHours() - 12 : date.getHours())
@@ -22,6 +17,12 @@
        document.getElementById('placa').addEventListener('keyup', function(){
        this.value =  this.value.toUpperCase();
        })
+    hoy.addEventListener('click', function (){
+        document.getElementById('entrada').disabled = true;
+    });
+    
+
+   
     function Auth(param,ev){
         this.param = param[0];
         this.ev = ev;
@@ -42,6 +43,14 @@
         }
         return true;
     }
+    Auth.prototype.monto = function(){
+        let monto = this.param.monto.value;
+        if(monto.length < 3){
+            alert('Monto Invalido')
+            this.ev.preventDefault();
+            return false;
+        }
+    }
     Auth.prototype.cedula = function(){
         let cedula = this.param.cedula.value;
         if(cedula.length > 6){
@@ -59,7 +68,7 @@
 
     datos[0].in.addEventListener('click', function(ev){
          let auth = new Auth(datos, ev);
-        auth.placa();
+        auth.monto();
     });
  
     sig.addEventListener("click", function(ev){

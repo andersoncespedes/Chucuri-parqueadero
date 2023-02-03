@@ -13,6 +13,16 @@ class AutoController extends Auto{
                 return false;
             }
     }
+    public function searchById($id){
+        $stmt = $this->init()->prepare("SELECT * FROM ".$this->table." WHERE id_auto= '".$id."'" );
+        if($stmt->execute()){
+            $stmt->setFetchMode(PDO::FETCH_ASSOC); 
+             return $stmt->fetch();
+        }
+        else{
+            return false;
+        }
+}
     public function mostrar(){
         try{
             $stmt = $this->init()->prepare("SELECT * FROM " .$this->table);
@@ -22,6 +32,31 @@ class AutoController extends Auto{
         }catch(PDOException $e){
             echo "Error" .$e;
         }
+    }
+    public function modificarAuto($param, $id){
+        try{
+            $stmt = $this->init()->prepare("UPDATE ".$this->table."
+            SET tipo_veh = ?, placa = ?
+            WHERE id_auto = '".$id."'");
+            $str = strtoupper($param['placa']);
+            if($stmt->execute([$param['tipo'], $str])){
+                return true;
+            }
+        }catch(PDOException $err){
+            print_r($err);
+
+        }
+    }
+    public function eliminarById($id){
+        try{
+            $stmt = $this->init()->prepare("DELETE FROM ".$this->table." WHERE id_auto = '".$id."'");
+            $stmt->execute();
+            $stmt->closeCursor();
+            $stmt = null;
+             return true;
+         }catch(PDOException $e){
+             return $e;
+         }
     }
     public function guardar($param){
         
@@ -64,8 +99,14 @@ class AutoController extends Auto{
 }
 $auto = new AutoController;
 $x = $auto->mostrar();
+if(isset($_GET['eliminar'])){
+    $datos = $auto->eliminarById($_GET['id']);
+    if($datos){
+        header('location: ../');
+    }
+}
 if($_POST){
-    if($_POST['ingresar']){
+    if(isset($_POST['in'])){
         if($auto->guardar($_POST)){
             header('location: ../vistas/rec_entrada.php?tipo='.$_POST['tipo'].'&placa='.$_POST['placa'].'&monto='.$_POST['monto']);
         }
@@ -75,6 +116,15 @@ if($_POST){
                     window.close();
                 </script>
            <?php
+        }
+    }
+    if(isset($_GET['modificar'])){
+        print_r($_POST);
+        if($auto->modificarAuto($_POST, $_GET['id'])){
+            header('location: ../');
+        }
+        else{
+            header('location: ../?err=1');
         }
     }
 }

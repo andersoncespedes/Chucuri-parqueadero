@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="headP">
-            <h3 style="font-style: arial;"><b style="color:rebeccapurple"> Parqueadero</b> <b style="color:red">Chucuri</b> </h3>
+            <h3 ><b style="color:rebeccapurple"> Parqueadero</b> <b style="color:red">Chucuri</b> </h3>
         </div>
         
         <nav> 
