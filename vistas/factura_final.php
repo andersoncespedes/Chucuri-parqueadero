@@ -2,14 +2,25 @@
 date_default_timezone_set("America/Bogota");
 $medidaTicket = 180;
 $finalDa = preg_split('/[  ]/',$datos['fecha']);
-$difH = date('d') - preg_split('/[-]/',$finalDa[0])[2];
+if(preg_split('/[-]/',$finalDa[0])[1] != date('m')){
+    $difH = (date("d", strtotime("last day of previous month")) - preg_split('/[-]/',$finalDa[0])[2]) + date("d");
+}
+if(preg_split('/[-]/',$finalDa[0])[1] == date('m')){
+    $difH = date('d') - preg_split('/[-]/',$finalDa[0])[2];
+}
 $difM = date('Y') - preg_split('/[-]/',$finalDa[0])[0];
 if($datos['tipo_fact'] == "Hora"){
-    if(preg_split('/[:]/',$finalDa[0])[2] > date('d')){
-        $resultF = (date('H')  + (24 * $difH));
-        $calc = $resultF - preg_split('/[:]/',$finalDa[1])[0];
+    if(preg_split('/[-]/',$finalDa[0])[2] !== date('d')){
+        if(preg_split('/[-]/',$finalDa[0])[1] == date('m')){
+           $resultF = (date('H')  + (24 * $difH));
+            $calc = $resultF - preg_split('/[:]/',$finalDa[1])[0]; 
+        }
+        else{
+            $calc = (date('H')  + (24 * $difH));
+        }
+        
     }
-    if(preg_split('/[:]/',$finalDa[1])[0] < date('H') || preg_split('/[:]/',$finalDa[1])[0] == date('H') ){
+    if(preg_split('/[:]/',$finalDa[1])[0] < date('H') || preg_split('/[:]/',$finalDa[1])[0] == date('H') && preg_split('/[-]/',$finalDa[0])[2] === date('d')){
         $calc = date('H') - preg_split('/[:]/',$finalDa[1])[0];
     }
     if($calc == 0){
@@ -39,6 +50,7 @@ if($datos['tipo_fact'] == "Mensual"){
     if(preg_split('/[-]/',$finalDa[0])[0] !== date('Y')){
         $resultF = (date('m')  + (12 * $difM) );
         $result = $resultF - preg_split('/[-]/',$finalDa[0])[1];
+        echo $result;
     }
     if(preg_split('/[-]/',$finalDa[0])[1] < date('m') || preg_split('/[-]/',$finalDa[0])[1] == date('m')){
         $result = date('m') - preg_split('/[-]/',$finalDa[0])[1];
@@ -133,11 +145,11 @@ if($datos['tipo_fact'] == "Mensual"){
 </head>
 
 <body>
+
     <div class="ticket centrado">
         <h1>PARQUEADERO CHUCURI</h1>
         <h2>Ticket de venta #<?= $_GET['id']?></h2>
         <h2><?= date("d-m-Y H:i:s") ?></h2>
-        <?= $calc ?>
         <table>
             <thead>
                 <tr class="centrado">

@@ -68,6 +68,20 @@ header nav ul li a:hover{
     border-radius:20px; 
     text-align:center;
 }
+.contCanvas{
+     width: 100%;
+    box-shadow: 0 0 2px black;
+    background-color: white;
+    padding: 10px;
+
+    border-radius: 20px;
+}
+canvas{
+   width: 70%;
+   margin:auto;
+    
+    
+}
 footer{
     width: 100%;
     margin-top:20px;

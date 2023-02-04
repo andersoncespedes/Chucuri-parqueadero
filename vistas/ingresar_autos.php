@@ -47,6 +47,8 @@ $id = 1;
                             <label for="">Ahora</label>
                         </div><br>
                         <div class="form-group" style="text-align: center;">
+                        <button type="button" id="atras" style="float: left; display:none;" class="btn btn-warning">Atras</button>
+
                             <input type="submit" value="Subir" name="in" id="in" class="btn btn-success col-md-6 ">
                         </div>
                     </div>

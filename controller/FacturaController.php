@@ -30,61 +30,8 @@ class FacturaController extends Factura{
         }
         
     }
-    public function gainsByDay(){
-        try{
-            $stmt = $this->init()->prepare("SELECT SUM(monto_tot) as total FROM factura
-            WHERE salida BETWEEN '".date("Y-m-d")." 00:00:00' AND '".date("Y-m-d H:i:s")."' ");
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-            $r = $stmt->fetch()['total'];
-            $stmt->closeCursor();
-            return $r;
-        }catch(PDOException $err){
-            return $err;
-        }
-    }
-    public function gainsByMonth(){
-        try{
-            $x = date("Y-m-01 00:00:00");
-            $stmt = $this->init()->prepare("SELECT SUM(monto_tot) as total FROM factura
-            WHERE salida BETWEEN '".$x."' AND '".date("Y-m-d H:i:s")."' ");
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-            $r = $stmt->fetch()['total'];
-            $stmt->closeCursor();
-            return $r;
-        }catch(PDOException $err){
-            return $err;
-        }
-    }
-    public function estAct(){
-        try{
-            $stmt = $this->init()->prepare("SELECT count(valor) as num FROM " .$this->table. " WHERE estado = 'activo'");
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-            $a = $stmt->fetch()['num'];
-            $stmt->closeCursor();
-            $stmt = null;
-            return $a;
-        }catch(PDOException $e){
-            echo "Error" .$e;
-        }
-        
-    }
-    public function estInact(){
-        try{
-            $stmt = $this->init()->prepare("SELECT count(valor) as num FROM " .$this->table. " WHERE estado = 'inactivo'");
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-            $a = $stmt->fetch()['num'];
-            $stmt->closeCursor();
-            $stmt = null;
-            return $a;
-        }catch(PDOException $e){
-            echo "Error" .$e;
-        }
-        
-    }
+    
+    
     public function mostrarInact(){
         try{
             $stmt = $this->init()->prepare("SELECT * FROM " .$this->table ." a INNER JOIN autos b ON a.id_auto = b.id_auto WHERE estado = 'inactivo'");
@@ -121,7 +68,7 @@ class FacturaController extends Factura{
             $stmt->execute([$id_auto,$hoy,$param['monto'], $param['tip_parq']]);
             $stmt->closeCursor();
             $stmt = null;
-            $this->close($this->init());
+            
             return true;
         }catch(PDOException $e){
             echo "Error " .$e;
@@ -153,23 +100,7 @@ class FacturaController extends Factura{
             return $e;
         }
     }
-    public function stats(){
-        $factura = $this->init()->prepare("SELECT count(fecha) as num FROM factura ");
-        $factura->execute();
-        $factura->setFetchMode(PDO::FETCH_ASSOC);
-
-        $auto = $this->init()->prepare("SELECT count(placa) as num FROM autos");
-        $auto->execute();
-        $auto->setFetchMode(PDO::FETCH_ASSOC);
-
-        $numF = $factura->fetch()['num'];
-        $numA = $auto->fetch()['num'];
-
-        $factura->closeCursor();
-        $factura = null;
-        $i = 0;
-        return ["factura" => $numF, "auto" => $numA, "facturaAct" => $this->estAct(), "facturaInact" => $this->estInact()];
-    }
+   
 }
 $factura = new FacturaController;
 if(isset($_GET['imprimir'])){

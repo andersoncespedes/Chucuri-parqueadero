@@ -25,7 +25,7 @@ $z = $factura->mostrarInact();
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Fecha</th>
+                        <th>Entrada</th>
                         <th>Tipo</th>
                         <th>Placa</th>
                         <th>Valor Inicial</th>
@@ -60,7 +60,8 @@ $z = $factura->mostrarInact();
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Fecha</th>
+                        <th>Entrada</th>
+                        <th>Salida</th>
                         <th>Tipo</th>
                         <th>Placa</th>
                         <th>Valor Inicial</th>
@@ -74,6 +75,7 @@ $z = $factura->mostrarInact();
                         <tr>
                             <td><?=$id?></td>
                             <td><?=$row['fecha']?></td>
+                            <td><?=$row['salida']?></td>
                             <td><?=$row['tipo_veh']?></td>
                             <td><?=$row['placa']?></td>
                             <td><?=$row['valor']?></td>

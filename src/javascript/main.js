@@ -6,6 +6,8 @@
     const sig = document.getElementById('siguiente');
     const datos = document.getElementsByName('form');
     const hoy = document.getElementById('hoy');
+    const atras = document.getElementById('atras');
+
     setInterval(function(){
         let date = new Date();
         let hours = (date.getHours() > 12 ? date.getHours() - 12 : date.getHours())
@@ -17,8 +19,15 @@
        document.getElementById('placa').addEventListener('keyup', function(){
        this.value =  this.value.toUpperCase();
        })
-    hoy.addEventListener('click', function (){
-        document.getElementById('entrada').disabled = true;
+    hoy.addEventListener('change', function (){
+        if(document.getElementById('entrada').disabled){
+            document.getElementById('entrada').disabled = false;
+        }
+        else{
+            document.getElementById('entrada').disabled = true;
+
+        }
+        
     });
     
 
@@ -70,7 +79,11 @@
          let auth = new Auth(datos, ev);
         auth.monto();
     });
- 
+    atras.addEventListener("click", function(){
+        veh.style.display = "block";
+        clien.style.display = "none";
+        atras.style.display = "none";
+    })
     sig.addEventListener("click", function(ev){
         let auth = new Auth(datos, ev);
         let date = new Date();
@@ -83,6 +96,7 @@
             console.log(plac.value);
             veh.style.display = "none";
             clien.style.display = "block";
+            atras.style.display = "block";
             plac.value = datos[0].placa.value;
             if(datos[0].tipo.value == 'Moto' && datos[0].tip_parq.value == 'Hora'){
                 monto.value = 1000;
