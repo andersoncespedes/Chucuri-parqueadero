@@ -34,10 +34,13 @@ $z = $factura->mostrarInact();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php  while ($row = $x->fetch()) {?>
+                    <?php $date = new DateTime; while ($row = $x->fetch()) 
+                    {
+                        $date = date_create($row['fecha']);
+                        ?>
                         <tr>
                             <td><?=$id?></td>
-                            <td><?=$row['fecha']?></td>
+                            <td><?= date_format($date, 'd/m/Y H:i:s')?></td>
                             <td><?=$row['tipo_veh']?></td>
                             <td><?=$row['placa']?></td>
                             <td><?=$row['valor']?></td>
@@ -71,11 +74,14 @@ $z = $factura->mostrarInact();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($row = $z->fetch()) {?>
+                    <?php while ($row = $z->fetch()) 
+                    {
+                        $entrada = date_create($row['fecha']);
+                        $salida = date_create($row['salida']);?>
                         <tr>
                             <td><?=$id?></td>
-                            <td><?=$row['fecha']?></td>
-                            <td><?=$row['salida']?></td>
+                            <td><?=date_format($entrada, 'd/m/Y H:i:s')?></td>
+                            <td><?=date_format($salida, 'd/m/Y H:i:s')?></td>
                             <td><?=$row['tipo_veh']?></td>
                             <td><?=$row['placa']?></td>
                             <td><?=$row['valor']?></td>

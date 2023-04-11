@@ -29,9 +29,6 @@
         }
         
     });
-    
-
-   
     function Auth(param,ev){
         this.param = param[0];
         this.ev = ev;

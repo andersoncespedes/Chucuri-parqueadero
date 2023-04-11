@@ -36,6 +36,9 @@ $result = $auto->searchById($_GET['id']);
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/datatables/media/js/jquery.dataTables.js"></script>
     <script src="../src/javascript/dataTable.js"></script>
+    <script>
+        
+    </script>
     <script src="../src/javascript/main.js"></script>
 </body>
 </html>
